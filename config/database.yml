@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: eatandmeet_development
+  database: eatmeet_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: eatandmeet_test
+  database: eatmeet_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: eatandmeet_production
-  username: eatandmeet
-  password: <%= ENV['EATANDMEET_DATABASE_PASSWORD'] %>
+  database: eatmeet_production
+  username: eatmeet
+  password: <%= ENV['EATMEET_DATABASE_PASSWORD'] %>
