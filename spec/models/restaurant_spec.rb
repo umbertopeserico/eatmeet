@@ -37,24 +37,6 @@ RSpec.describe Restaurant, type: :model do
 
       it { expect(subject).not_to be_valid }
     end
-
-    describe 'duplicate' do
-      before do
-        @dup_restaurant = @restaurant.dup
-        @dup_restaurant.save!
-      end
-
-      it { expect(subject).not_to be_valid }
-
-      describe 'case sensitive' do
-        before do
-          @dup_restaurant.email.upcase!
-          @dup_restaurant.save!
-        end
-
-        it { expect(subject).not_to be_valid }
-      end
-    end
   end
 
   describe 'full_address' do
