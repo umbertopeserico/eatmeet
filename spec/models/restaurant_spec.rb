@@ -79,4 +79,16 @@ RSpec.describe Restaurant, type: :model do
     end
   end
 
+  describe 'on delete' do
+    before do
+      subject.save
+      @menu = FactoryGirl.create(:menu, restaurant: subject)
+    end
+
+    it do
+      old_id = subject.id
+      subject.destroy
+      expect(Menu.where(restaurant_id: old_id).count).to be == 0
+    end
+  end
 end
