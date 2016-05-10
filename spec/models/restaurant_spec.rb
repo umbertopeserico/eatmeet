@@ -49,4 +49,14 @@ RSpec.describe Restaurant, type: :model do
     end
   end
 
+  describe 'restaurant_owner' do
+    describe 'empty' do
+      before do
+        @restaurant.restaurant_owner = nil
+      end
+
+      it { expect(subject).not_to be_valid }
+    end
+  end
+
 end
