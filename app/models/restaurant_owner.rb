@@ -10,6 +10,10 @@ class RestaurantOwner < ActiveRecord::Base
 
   # Methods
 
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :lockable
+
   private
     def set_full_name
       self.full_name = "#{self.name} #{self.surname}"
