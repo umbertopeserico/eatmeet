@@ -82,4 +82,15 @@ RSpec.describe User, type: :model do
       expect(subject.full_name).to be == "#{subject.name} #{subject.surname}"
     end
   end
+
+  describe 'devise' do
+    it { expect(subject.devise_modules.include?(:database_authenticatable)).to be true }
+    it { expect(subject.devise_modules.include?(:registerable)).to be true }
+    it { expect(subject.devise_modules.include?(:confirmable)).to be true }
+    it { expect(subject.devise_modules.include?(:recoverable)).to be true }
+    it { expect(subject.devise_modules.include?(:rememberable)).to be true }
+    it { expect(subject.devise_modules.include?(:trackable)).to be true }
+    it { expect(subject.devise_modules.include?(:validatable)).to be true }
+    it { expect(subject.devise_modules.include?(:lockable)).to be true }
+  end
 end
