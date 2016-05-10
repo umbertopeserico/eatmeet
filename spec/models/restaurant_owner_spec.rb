@@ -11,5 +11,62 @@ RSpec.describe RestaurantOwner, type: :model do
   it { expect(subject).to respond_to(:surname) }
   it { expect(subject).to respond_to(:full_name) }
   it { expect(subject).to respond_to(:email) }
-  it { expect(subject).to respond_to(:username) }
+
+  describe 'name' do
+    describe 'empty' do
+      before do
+        @restaurant_owner.name = nil
+      end
+
+      it { expect(subject).not_to be_valid }
+    end
+  end
+
+  describe 'surname' do
+    describe 'empty' do
+      before do
+        @restaurant_owner.surname = nil
+      end
+
+      it { expect(subject).not_to be_valid }
+    end
+  end
+
+  describe 'email' do
+    describe 'empty' do
+      before do
+        @restaurant_owner.email = nil
+      end
+
+      it { expect(subject).not_to be_valid }
+    end
+
+    describe 'duplicate' do
+      before do
+        @dup_restaurant_owner = @restaurant_owner.dup
+        @dup_restaurant_owner.save!
+      end
+
+      it { expect(subject).not_to be_valid }
+
+      describe 'case sensitive' do
+        before do
+          @dup_restaurant_owner.email.upcase!
+          @dup_restaurant_owner.save!
+        end
+
+        it { expect(subject).not_to be_valid }
+      end
+    end
+  end
+
+  describe 'full_name' do
+    before do
+      @restaurant_owner.save
+    end
+
+    it 'should be equal to #{name} #{surname}' do
+      expect(subject.full_name).to be == "#{subject.name} #{subject.surname}"
+    end
+  end
 end
