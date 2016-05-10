@@ -5,6 +5,9 @@ class RestaurantOwner < ActiveRecord::Base
   validates :email,           presence: true,
                               uniqueness: { case_sensitive: false }
 
+  # Relations
+  has_many :restaurants
+
   # Callbacks
   before_save :set_full_name
 

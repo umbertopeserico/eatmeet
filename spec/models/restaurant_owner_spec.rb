@@ -13,6 +13,7 @@ RSpec.describe RestaurantOwner, type: :model do
   it { expect(subject).to respond_to(:email) }
   it { expect(subject).to respond_to(:password) }
   it { expect(subject).to respond_to(:password_confirmation) }
+  it { expect(subject).to respond_to(:restaurants) }
 
   describe 'name' do
     describe 'empty' do
