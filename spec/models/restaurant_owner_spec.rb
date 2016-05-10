@@ -83,4 +83,17 @@ RSpec.describe RestaurantOwner, type: :model do
     it { expect(subject.devise_modules.include?(:validatable)).to be true }
     it { expect(subject.devise_modules.include?(:lockable)).to be true }
   end
+
+  describe 'on delete' do
+    before do
+      @restaurant_owner.save
+      @restaurant = FactoryGirl.create(:restaurant, restaurant_owner: @restaurant_owner)
+    end
+
+    it do
+      old_id = @restaurant_owner.id
+      @restaurant_owner.destroy
+      expect(Restaurant.where(restaurant_owner_id: old_id).count).to be == 0
+    end
+  end
 end

@@ -65,4 +65,5 @@ RSpec.describe Restaurant, type: :model do
       expect(subject.full_address).to be == "#{subject.street}, #{subject.city} #{subject.zip_code} (#{subject.province})"
     end
   end
+
 end

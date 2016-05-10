@@ -6,7 +6,7 @@ class RestaurantOwner < ActiveRecord::Base
                               uniqueness: { case_sensitive: false }
 
   # Relations
-  has_many :restaurants
+  has_many :restaurants, dependent: :destroy
 
   # Callbacks
   before_save :set_full_name
