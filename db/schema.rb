@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510164401) do
+ActiveRecord::Schema.define(version: 20160510193329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "menus", force: :cascade do |t|
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "title",                                                null: false
+    t.text     "text_menu"
+    t.text     "html_menu"
+    t.decimal  "max_price",     precision: 20, scale: 2, default: 0.0
+    t.decimal  "min_price",     precision: 20, scale: 2, default: 0.0
+    t.integer  "restaurant_id",                                        null: false
+  end
+
+  add_index "menus", ["restaurant_id"], name: "index_menus_on_restaurant_id", using: :btree
 
   create_table "restaurant_owners", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -79,5 +92,6 @@ ActiveRecord::Schema.define(version: 20160510164401) do
 
   add_index "zones", ["name"], name: "index_zones_on_name", unique: true, using: :btree
 
+  add_foreign_key "menus", "restaurants"
   add_foreign_key "restaurants", "restaurant_owners"
 end

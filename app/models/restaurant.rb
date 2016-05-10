@@ -5,6 +5,7 @@ class Restaurant < ActiveRecord::Base
   validates :restaurant_owner,  presence: true
 
   # Relations
+  has_many :menus
   has_and_belongs_to_many :zones
   belongs_to :restaurant_owner
 
