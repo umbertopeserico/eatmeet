@@ -9,6 +9,7 @@ RSpec.describe Zone, type: :model do
   subject { @zone }
 
   it { expect(subject).to respond_to(:name) }
+  it { expect(subject).to respond_to(:restaurants) }
 
   describe 'name' do
     describe 'empty' do

@@ -17,6 +17,7 @@ RSpec.describe Restaurant, type: :model do
   it { expect(subject).to respond_to(:province) }
   it { expect(subject).to respond_to(:full_address) }
   it { expect(subject).to respond_to(:restaurant_owner) }
+  it { expect(subject).to respond_to(:zones) }
 
   describe 'name' do
     describe 'empty' do
