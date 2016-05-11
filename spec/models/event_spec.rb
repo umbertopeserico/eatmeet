@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id               :integer          not null, primary key
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  title            :string           not null
+#  schedule         :datetime         not null
+#  menu_id          :integer          not null
+#  max_people       :integer          not null
+#  min_people       :integer          not null
+#  people_min_price :integer          not null
+#  max_price        :decimal(20, 2)   default(0.0)
+#  min_price        :decimal(20, 2)   default(0.0)
+#  actual_price     :decimal(20, 2)   default(0.0)
+#  prices_array     :decimal(, )      is an Array
+#
+
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
