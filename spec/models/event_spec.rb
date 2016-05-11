@@ -17,6 +17,7 @@ RSpec.describe Event, type: :model do
   it { expect(subject).to respond_to(:min_price) }
   it { expect(subject).to respond_to(:actual_price) }
   it { expect(subject).to respond_to(:prices_array) }
+  it { expect(subject).to respond_to(:users) }
 
   describe 'title' do
     describe 'empty' do

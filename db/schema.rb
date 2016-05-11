@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511075257) do
+ActiveRecord::Schema.define(version: 20160511083550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20160511075257) do
     t.decimal  "actual_price",     precision: 20, scale: 2, default: 0.0
     t.decimal  "prices_array",                                                         array: true
   end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "user_id",  null: false
+    t.integer "event_id", null: false
+  end
+
+  add_index "events_users", ["event_id", "user_id"], name: "index_events_users_on_event_id_and_user_id", unique: true, using: :btree
+  add_index "events_users", ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id", unique: true, using: :btree
 
   create_table "menus", force: :cascade do |t|
     t.datetime "created_at",                                           null: false

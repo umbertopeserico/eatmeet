@@ -24,6 +24,7 @@ RSpec.describe User, type: :model do
   it { expect(subject).to respond_to(:surname) }
   it { expect(subject).to respond_to(:full_name) }
   it { expect(subject).to respond_to(:email) }
+  it { expect(subject).to respond_to(:events) }
 
   describe 'name' do
     describe 'empty' do
