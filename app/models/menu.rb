@@ -19,6 +19,7 @@ class Menu < ActiveRecord::Base
   validates :restaurant,      presence: true
 
   # Relations
+  has_many :events
   belongs_to :restaurant
 
   # Callbacks

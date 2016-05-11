@@ -28,6 +28,7 @@ RSpec.describe Menu, type: :model do
   it { expect(subject).to respond_to(:max_price) }
   it { expect(subject).to respond_to(:min_price) }
   it { expect(subject).to respond_to(:restaurant) }
+  it { expect(subject).to respond_to(:events) }
 
   describe 'title' do
     describe 'empty' do

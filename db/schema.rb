@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510205145) do
+ActiveRecord::Schema.define(version: 20160511075257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "title",                                                   null: false
+    t.datetime "schedule",                                                null: false
+    t.integer  "menu_id",                                                 null: false
+    t.integer  "max_people",                                              null: false
+    t.integer  "min_people",                                              null: false
+    t.integer  "people_min_price",                                        null: false
+    t.decimal  "max_price",        precision: 20, scale: 2, default: 0.0
+    t.decimal  "min_price",        precision: 20, scale: 2, default: 0.0
+    t.decimal  "actual_price",     precision: 20, scale: 2, default: 0.0
+    t.decimal  "prices_array",                                                         array: true
+  end
 
   create_table "menus", force: :cascade do |t|
     t.datetime "created_at",                                           null: false
@@ -122,6 +137,7 @@ ActiveRecord::Schema.define(version: 20160510205145) do
 
   add_index "zones", ["name"], name: "index_zones_on_name", unique: true, using: :btree
 
+  add_foreign_key "events", "menus"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "restaurants", "restaurant_owners"
 end
