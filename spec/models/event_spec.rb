@@ -37,6 +37,7 @@ RSpec.describe Event, type: :model do
   it { expect(subject).to respond_to(:actual_price) }
   it { expect(subject).to respond_to(:prices_array) }
   it { expect(subject).to respond_to(:users) }
+  it { expect(subject).to respond_to(:categories) }
 
   describe 'title' do
     describe 'empty' do

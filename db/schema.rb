@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511083550) do
+ActiveRecord::Schema.define(version: 20160521201807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name",       null: false
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
+  create_table "categories_events", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "event_id",    null: false
+  end
+
+  add_index "categories_events", ["category_id", "event_id"], name: "index_categories_events_on_category_id_and_event_id", using: :btree
+  add_index "categories_events", ["event_id", "category_id"], name: "index_categories_events_on_event_id_and_category_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at",                                              null: false
