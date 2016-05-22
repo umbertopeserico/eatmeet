@@ -39,6 +39,7 @@ RSpec.describe Event, type: :model do
   it { expect(subject).to respond_to(:users) }
   it { expect(subject).to respond_to(:categories) }
   it { expect(subject).to respond_to(:restaurant) }
+  it { expect(subject).to respond_to(:restaurant_owner) }
 
   describe 'title' do
     describe 'empty' do
