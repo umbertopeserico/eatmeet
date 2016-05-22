@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  mount_devise_token_auth_for 'User', at: 'api/users/auth'
   devise_for :restaurant_owners
-
+  
   namespace :api, defaults: { format: :json } do
     scope module: :v1 do
       resources :categories, only: [ :index, :show ] do

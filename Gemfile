@@ -13,6 +13,9 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'responders'
 gem 'active_model_serializers'
 

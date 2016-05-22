@@ -28,6 +28,8 @@
 #
 
 class User < ActiveRecord::Base
+  include DeviseTokenAuth::Concerns::User
+
   # Validations
   validates :name,              presence: true
   validates :surname,           presence: true
@@ -44,6 +46,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
+
+  # :omniauthable
 
   private
     def set_full_name
