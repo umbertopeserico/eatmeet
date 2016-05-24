@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
   before_action :set_event, only: [:show, :participants]
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   respond_to :json
 
   def index
