@@ -86,5 +86,6 @@ Rails.application.configure do
     :password  => ENV["SENDGRID_PASSWORD"], # SMTP password is any valid API key, when user_name is "apikey".
     :authentication => 'login',
     :domain => 'eatmeet.herokuapp.com', # your domain to identify your server when connecting
-}
+  }
+  config.action_mailer.default_url_options = { host: 'eatmeet.herokuapp.com' }
 end
