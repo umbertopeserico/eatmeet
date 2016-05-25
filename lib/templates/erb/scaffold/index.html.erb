@@ -1,15 +1,12 @@
-<div class="page-header">
+<%% content_for(:page_header) do %>
   <h1>
-    <%= plural_table_name %>
-    <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do %>
+    <%= plural_table_name.capitalize %>
+    <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary pull-right' do %>
     <span class="glyphicon glyphicon-plus"></span>
     Aggiungi
     <%% end %>
   </h1>
-</div>
-<% content_for(:page_header) do %>
-    <h1>Listing <%= plural_table_name %></h1>
-<% end %>
+<%% end %>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
@@ -18,9 +15,9 @@
     <% attributes.each do |attribute| -%>
         <th><%= attribute.human_name %></th>
     <% end -%>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
       </tr>
     </thead>
 

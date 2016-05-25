@@ -16,3 +16,7 @@
  *= require startbootstrap-sb-admin-2/dist/css/sb-admin-2
  *= require_self
  */
+
+table thead .action-column {
+    width: 10%;
+}
