@@ -1,0 +1,31 @@
+<% content_for(:page_header) do %>
+<h1>
+  <%= link_to administrator_restaurant_owners_path, class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+  <%= link_to edit_administrator_restaurant_owner_path(@restaurant_owner), class: 'btn btn-primary pull-right' do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+  Edit
+  <% end %>
+  <h1>Show restaurant owner</h1>
+</h1>
+<% end %>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @restaurant_owner.name %></dd>
+
+  <dt>Surname:</dt>
+  <dd><%= @restaurant_owner.surname %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @restaurant_owner.email %></dd>
+
+  <dt>Password:</dt>
+  <dd><%= @restaurant_owner.password %></dd>
+
+  <dt>Password confirmation:</dt>
+  <dd><%= @restaurant_owner.password_confirmation %></dd>
+
+</dl>
