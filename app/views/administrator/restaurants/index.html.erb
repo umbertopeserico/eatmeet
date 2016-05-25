@@ -1,0 +1,47 @@
+<% content_for(:page_header) do %>
+  <h1>
+    Restaurants
+    <%= link_to new_administrator_restaurant_path, class: 'btn btn-primary pull-right' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Aggiungi
+    <% end %>
+  </h1>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Zip code</th>
+            <th>Province</th>
+            <th>Restaurant owner</th>
+            <th class="action-column"></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @restaurants) do |restaurant| %>
+            <td><%= restaurant.name %></td>
+            <td><%= restaurant.description %></td>
+            <td><%= restaurant.email %></td>
+            <td><%= restaurant.phone %></td>
+            <td><%= restaurant.street %></td>
+            <td><%= restaurant.city %></td>
+            <td><%= restaurant.zip_code %></td>
+            <td><%= restaurant.province %></td>
+            <td><%= restaurant.restaurant_owner_id %></td>
+            <td><%= link_to 'Show', administrator_zone_path(restaurant) %></td>
+        <td><%= link_to 'Edit', edit_administrator_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', administrator_restaurant_path(restaurant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

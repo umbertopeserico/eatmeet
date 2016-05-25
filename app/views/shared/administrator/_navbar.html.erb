@@ -43,13 +43,19 @@
           <!-- /input-group -->
         </li>
         <li>
-          <a href="index.html"><i class="fa fa-dashboard fa-fw"></i><span>Zone</span></a>
+          <%= link_to administrator_zones_path do %>
+              <i class="fa fa-dashboard fa-fw"></i><span>Zones</span>
+          <% end %>
         </li>
         <li>
-          <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Ristoranti</a>
+          <%= link_to administrator_restaurant_owners_path do %>
+              <i class="fa fa-dashboard fa-fw"></i><span>Restaurant Owners</span>
+          <% end %>
         </li>
         <li>
-          <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Ristoratori</a>
+          <%= link_to administrator_restaurants_path do %>
+              <i class="fa fa-dashboard fa-fw"></i><span>Restaurants</span>
+          <% end %>
         </li>
         <li>
           <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Utenti</a>

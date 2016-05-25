@@ -1,0 +1,43 @@
+<% content_for(:page_header) do %>
+<h1>
+  <%= link_to restaurants_path, class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+  <%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-primary pull-right' do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+  Edit
+  <% end %>
+  <h1>Show restaurant</h1>
+</h1>
+<% end %>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @restaurant.name %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @restaurant.description %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @restaurant.email %></dd>
+
+  <dt>Phone:</dt>
+  <dd><%= @restaurant.phone %></dd>
+
+  <dt>Street:</dt>
+  <dd><%= @restaurant.street %></dd>
+
+  <dt>City:</dt>
+  <dd><%= @restaurant.city %></dd>
+
+  <dt>Zip code:</dt>
+  <dd><%= @restaurant.zip_code %></dd>
+
+  <dt>Province:</dt>
+  <dd><%= @restaurant.province %></dd>
+
+  <dt>Restaurant owner:</dt>
+  <dd><%= @restaurant.restaurant_owner_id %></dd>
+
+</dl>
