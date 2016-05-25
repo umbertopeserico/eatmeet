@@ -1,0 +1,15 @@
+<% content_for(:page_header) do %>
+<h1>
+  <%= link_to administrator_menus_path, class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+  <%= link_to administrator_menu_path(@menu), class: 'btn btn-primary pull-right' do %>
+  <span class="glyphicon glyphicon-info-sign"></span>
+  Show
+  <% end %>
+  <h1>Edit menu</h1>
+</h1>
+<% end %>
+
+<%= render 'form' %>

@@ -1,0 +1,31 @@
+<% content_for(:page_header) do %>
+<h1>
+  <%= link_to administrator_menus_path, class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+  <%= link_to edit_administrator_menu_path(@menu), class: 'btn btn-primary pull-right' do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+  Edit
+  <% end %>
+  <h1>Show menu</h1>
+</h1>
+<% end %>
+
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @menu.title %></dd>
+
+  <dt>Html menu:</dt>
+  <dd><%= @menu.html_menu %></dd>
+
+  <dt>Max price:</dt>
+  <dd><%= @menu.max_price %></dd>
+
+  <dt>Min price:</dt>
+  <dd><%= @menu.min_price %></dd>
+
+  <dt>Restaurant:</dt>
+  <dd><%= @menu.restaurant_id %></dd>
+
+</dl>

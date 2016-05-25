@@ -9,7 +9,7 @@ class Administrator::ZonesController < Administrator::AdministratorController
   end
 
   def show
-    respond_with(@zone)
+    respond_with(@zone, location: administrator_zone_path)
   end
 
   def new
@@ -23,17 +23,17 @@ class Administrator::ZonesController < Administrator::AdministratorController
   def create
     @zone = Zone.new(zone_params)
     @zone.save
-    respond_with(@zone)
+    respond_with(@zone, location: administrator_zone_path)
   end
 
   def update
     @zone.update(zone_params)
-    respond_with(@zone)
+    respond_with(@zone, location: administrator_zone_path)
   end
 
   def destroy
     @zone.destroy
-    respond_with(@zone)
+    respond_with(@zone, location: administrator_zone_path)
   end
 
   private

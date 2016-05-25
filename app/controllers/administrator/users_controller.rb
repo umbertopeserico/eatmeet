@@ -9,7 +9,7 @@ class Administrator::UsersController < Administrator::AdministratorController
   end
 
   def show
-    respond_with(@user)
+    respond_with(@user, location: administrator_user_path)
   end
 
   def new
@@ -23,17 +23,17 @@ class Administrator::UsersController < Administrator::AdministratorController
   def create
     @user = User.new(user_params)
     @user.save
-    respond_with(@user)
+    respond_with(@user, location: administrator_user_path)
   end
 
   def update
     @user.update(user_params)
-    respond_with(@user)
+    respond_with(@user, location: administrator_user_path)
   end
 
   def destroy
     @user.destroy
-    respond_with(@user)
+    respond_with(@user, location: administrator_user_path)
   end
 
   private
