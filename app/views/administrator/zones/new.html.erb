@@ -1,0 +1,11 @@
+<% content_for(:page_header) do %>
+<h1>
+  New zone
+  <%= link_to zones_path, class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+</h1>
+<% end %>
+
+<%= render 'form' %>

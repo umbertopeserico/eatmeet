@@ -1,0 +1,31 @@
+<% content_for(:page_header) do %>
+  <h1>
+    Zones
+    <%= link_to new_administrator_zone_path, class: 'btn btn-primary pull-right' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Aggiungi
+    <% end %>
+  </h1>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th class="action-column"></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @zones) do |zone| %>
+            <td><%= zone.name %></td>
+            <td><%= link_to 'Show', administrator_zone_path(zone) %></td>
+        <td><%= link_to 'Edit', edit_administrator_zone_path(zone) %></td>
+        <td><%= link_to 'Destroy', administrator_zone_path(zone), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
