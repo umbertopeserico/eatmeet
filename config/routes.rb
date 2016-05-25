@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :restaurant_owners
     resources :restaurants
     resources :menus
+    resources :events
     resources :users
   end
 

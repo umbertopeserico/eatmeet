@@ -1,0 +1,47 @@
+<% content_for(:page_header) do %>
+  <h1>
+    Events
+    <%= link_to new_administrator_event_path, class: 'btn btn-primary pull-right' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Aggiungi
+    <% end %>
+  </h1>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Title</th>
+            <th>Schedule</th>
+            <th>Menu</th>
+            <th>Max people</th>
+            <th>Min people</th>
+            <th>People min price</th>
+            <th>Max price</th>
+            <th>Min price</th>
+            <th>Actual price</th>
+            <th class="action-column"></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @events) do |event| %>
+            <td><%= event.title %></td>
+            <td><%= event.schedule %></td>
+            <td><%= event.menu_id %></td>
+            <td><%= event.max_people %></td>
+            <td><%= event.min_people %></td>
+            <td><%= event.people_min_price %></td>
+            <td><%= event.max_price %></td>
+            <td><%= event.min_price %></td>
+            <td><%= event.actual_price %></td>
+            <td><%= link_to 'Show', administrator_event_path(event) %></td>
+        <td><%= link_to 'Edit', edit_administrator_event_path(event) %></td>
+        <td><%= link_to 'Destroy', administrator_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

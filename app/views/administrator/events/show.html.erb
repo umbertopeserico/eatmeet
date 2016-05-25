@@ -1,0 +1,43 @@
+<% content_for(:page_header) do %>
+<h1>
+  <%= link_to administrator_events_path, class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+  <%= link_to edit_administrator_event_path(@event), class: 'btn btn-primary pull-right' do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+  Edit
+  <% end %>
+  <h1>Show event</h1>
+</h1>
+<% end %>
+
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @event.title %></dd>
+
+  <dt>Schedule:</dt>
+  <dd><%= @event.schedule %></dd>
+
+  <dt>Menu:</dt>
+  <dd><%= @event.menu_id %></dd>
+
+  <dt>Max people:</dt>
+  <dd><%= @event.max_people %></dd>
+
+  <dt>Min people:</dt>
+  <dd><%= @event.min_people %></dd>
+
+  <dt>People min price:</dt>
+  <dd><%= @event.people_min_price %></dd>
+
+  <dt>Max price:</dt>
+  <dd><%= @event.max_price %></dd>
+
+  <dt>Min price:</dt>
+  <dd><%= @event.min_price %></dd>
+
+  <dt>Actual price:</dt>
+  <dd><%= @event.actual_price %></dd>
+
+</dl>
