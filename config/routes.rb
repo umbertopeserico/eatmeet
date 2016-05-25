@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+
   mount_devise_token_auth_for 'User', at: 'api/users/auth'
   devise_for :restaurant_owners
   
