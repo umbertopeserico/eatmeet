@@ -58,7 +58,9 @@
           <% end %>
         </li>
         <li>
-          <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Utenti</a>
+          <%= link_to administrator_users_path do %>
+              <i class="fa fa-dashboard fa-fw"></i><span>Users</span>
+          <% end %>
         </li>
         <li>
           <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Eventi</a>

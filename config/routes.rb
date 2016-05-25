@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :zones
     resources :restaurant_owners
     resources :restaurants
+    resources :users
   end
 
 end

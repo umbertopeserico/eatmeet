@@ -1,0 +1,39 @@
+<% content_for(:page_header) do %>
+  <h1>
+    Users
+    <%= link_to new_administrator_user_path, class: 'btn btn-primary pull-right' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Aggiungi
+    <% end %>
+  </h1>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Password confirmation</th>
+            <th class="action-column"></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @users) do |user| %>
+            <td><%= user.name %></td>
+            <td><%= user.surname %></td>
+            <td><%= user.email %></td>
+            <td><%= user.password %></td>
+            <td><%= user.password_confirmation %></td>
+            <td><%= link_to 'Show', administrator_user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_administrator_user_path(user) %></td>
+        <td><%= link_to 'Destroy', administrator_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
