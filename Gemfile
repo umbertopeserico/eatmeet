@@ -20,6 +20,7 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'responders'
+gem 'bootstrap-generators'
 gem 'active_model_serializers'
 
 group :development, :test do
