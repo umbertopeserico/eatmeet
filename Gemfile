@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'thin'
+gem 'bower-rails', '~> 0.10.0'
 
 gem 'devise'
 gem 'devise_token_auth'
