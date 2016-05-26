@@ -23,17 +23,17 @@ class Administrator::MenusController < Administrator::AdministratorController
   def create
     @menu = Menu.new(menu_params)
     @menu.save
-    respond_with(@menu, location: administrator_zone_path)
+    respond_with(@menu, location: administrator_zone_path(@menu))
   end
 
   def update
     @menu.update(menu_params)
-    respond_with(@menu, location: administrator_menu_path)
+    respond_with(@menu, location: administrator_menu_path(@menu))
   end
 
   def destroy
     @menu.destroy
-    respond_with(@menu, location: administrator_zone_path)
+    respond_with(@menu, location: administrator_zones_path)
   end
 
   private

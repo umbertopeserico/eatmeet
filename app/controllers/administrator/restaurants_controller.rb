@@ -23,17 +23,17 @@ class Administrator::RestaurantsController < Administrator::AdministratorControl
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
-    respond_with(@restaurant, location: administrator_restaurant_path)
+    respond_with(@restaurant, location: administrator_restaurant_path(@restaurant))
   end
 
   def update
     @restaurant.update(restaurant_params)
-    respond_with(@restaurant, location: administrator_restaurant_path)
+    respond_with(@restaurant, location: administrator_restaurant_path(@restaurant))
   end
 
   def destroy
     @restaurant.destroy
-    respond_with(@restaurant, location: administrator_restaurant_path)
+    respond_with(@restaurant, location: administrator_restaurants_path)
   end
 
   private

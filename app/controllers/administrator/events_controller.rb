@@ -23,17 +23,17 @@ class Administrator::EventsController < Administrator::AdministratorController
   def create
     @event = Event.new(event_params)
     @event.save
-    respond_with(@event, location: administrator_event_path)
+    respond_with(@event, location: administrator_event_path(@event))
   end
 
   def update
     @event.update(event_params)
-    respond_with(@event, location: administrator_event_path)
+    respond_with(@event, location: administrator_event_path(@event))
   end
 
   def destroy
     @event.destroy
-    respond_with(@event, location: administrator_event_path)
+    respond_with(@event, location: administrator_events_path)
   end
 
   private
