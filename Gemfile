@@ -22,6 +22,7 @@ gem 'omniauth-facebook'
 gem 'responders'
 gem 'bootstrap-generators'
 gem 'active_model_serializers'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
