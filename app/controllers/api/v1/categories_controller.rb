@@ -5,7 +5,17 @@ class Api::V1::CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-    respond_with(@categories)
+    categories = @categories.map do |category|
+      CategorySerializer.new(category)
+    end
+    respond_with(
+        {
+            categories: categories,
+            meta: {
+                total: @categories.count
+            }
+        }
+    )
   end
 
   def show

@@ -19,6 +19,7 @@ RSpec.describe Category, type: :model do
 
   it { expect(subject).to respond_to(:name) }
   it { expect(subject).to respond_to(:events) }
+  it { expect(subject).to respond_to(:events_count) }
 
   describe 'name' do
     describe 'empty' do
@@ -34,6 +35,21 @@ RSpec.describe Category, type: :model do
       end
 
       it { expect(subject).not_to be_valid }
+    end
+  end
+
+  describe 'events_count' do
+    before do
+      @restaurant_owner = FactoryGirl.create(:restaurant_owner)
+      @restaurant = FactoryGirl.create(:restaurant, restaurant_owner: @restaurant_owner)
+      @menu = FactoryGirl.create(:menu, restaurant: @restaurant)
+      @event = FactoryGirl.create(:event, menu: @menu)
+      subject.events << @event
+      subject.save
+    end
+
+    it 'should return the number of event for that category' do
+      expect(subject.events_count).to be == 1
     end
   end
 end

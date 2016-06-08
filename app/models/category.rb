@@ -15,4 +15,9 @@ class Category < ActiveRecord::Base
 
   # Relations
   has_and_belongs_to_many :events
+
+  # Methods
+  def events_count
+    events.count
+  end
 end
