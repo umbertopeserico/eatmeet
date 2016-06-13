@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       resources :events, only: [ :index, :show ] do
         get 'participants' => 'events#participants', on: :member
+        post 'search' => 'events#search', on: :collection
       end
 
       resources :users, only: [:show]

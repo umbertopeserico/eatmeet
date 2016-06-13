@@ -5,7 +5,15 @@ class Api::V1::EventsController < ApplicationController
 
   def index
     @events = Event.all
-    respond_with(@events)
+    events = @events.map do |event|
+      CategorySerializer.new(event)
+    end
+    respond_with(
+      {
+        events: events,
+        meta: {}
+      }
+    )
   end
 
   def show
@@ -17,7 +25,33 @@ class Api::V1::EventsController < ApplicationController
     render 'users/index'
   end
 
+  def search
+    @events = Event.search
+    events = @events.map do |event|
+      EventSerializer.new(event)
+    end
+    respond_with(
+      {
+        events: events,
+        meta: {}
+      },
+      location: search_api_events_path
+    )
+  end
+
   private
+    def get_response
+      events = @events.map do |event|
+        CategorySerializer.new(event)
+      end
+      respond_with(
+        {
+          events: events,
+          meta: {}
+        }
+      )
+    end
+
     def set_event
       @event = Event.find(params[:id])
     end
