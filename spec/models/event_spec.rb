@@ -37,6 +37,8 @@ RSpec.describe Event, type: :model do
   it { expect(subject).to respond_to(:actual_price) }
   it { expect(subject).to respond_to(:prices_array) }
   it { expect(subject).to respond_to(:users) }
+  it { expect(subject).to respond_to(:participants) }
+  it { expect(subject).to respond_to(:participants_count) }
   it { expect(subject).to respond_to(:categories) }
   it { expect(subject).to respond_to(:restaurant) }
   it { expect(subject).to respond_to(:restaurant_owner) }
@@ -98,6 +100,56 @@ RSpec.describe Event, type: :model do
       end
 
       it { expect(subject).not_to be_valid }
+    end
+  end
+
+  describe 'participants count' do
+    before do
+      @restaurant_owner = FactoryGirl.create(:restaurant_owner)
+      @restaurant = FactoryGirl.create(:restaurant, restaurant_owner: @restaurant_owner)
+      @menu = FactoryGirl.create(:menu, restaurant: @restaurant)
+      @event = FactoryGirl.create(:event, menu: @menu)
+      @user = FactoryGirl.create(:user)
+    end
+
+    describe 'on add' do
+      it 'should update the participants count' do
+        @event.participants << @user
+        expect(@event.participants_count).to be == 1
+      end
+    end
+
+    describe 'on remove' do
+      before do
+        @event.participants << @user
+      end
+
+      it 'should update the participants count' do
+        @event.participants.delete(@user)
+        expect(@event.participants_count).to be == 0
+      end
+    end
+  end
+
+  describe 'actual sale' do
+    before do
+      @restaurant_owner = FactoryGirl.create(:restaurant_owner)
+      @restaurant = FactoryGirl.create(:restaurant, restaurant_owner: @restaurant_owner)
+      @menu = FactoryGirl.create(:menu, restaurant: @restaurant)
+      @user = FactoryGirl.create(:user)
+    end
+
+    describe 'when participant added' do
+      before do
+        subject.max_price = 20
+        subject.min_price = 10
+        subject.people_min_price = 1
+        subject.save
+        subject.participants << @user
+      end
+      it 'should update actual sale' do
+        expect(subject.actual_sale).to be == 50
+      end
     end
   end
 end

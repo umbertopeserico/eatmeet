@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522172818) do
+ActiveRecord::Schema.define(version: 20160613155229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,18 +33,20 @@ ActiveRecord::Schema.define(version: 20160522172818) do
   add_index "categories_events", ["event_id", "category_id"], name: "index_categories_events_on_event_id_and_category_id", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
-    t.string   "title",                                                   null: false
-    t.datetime "schedule",                                                null: false
-    t.integer  "menu_id",                                                 null: false
-    t.integer  "max_people",                                              null: false
-    t.integer  "min_people",                                              null: false
-    t.integer  "people_min_price",                                        null: false
-    t.decimal  "max_price",        precision: 20, scale: 2, default: 0.0
-    t.decimal  "min_price",        precision: 20, scale: 2, default: 0.0
-    t.decimal  "actual_price",     precision: 20, scale: 2, default: 0.0
-    t.decimal  "prices_array",                                                         array: true
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.string   "title",                                                     null: false
+    t.datetime "schedule",                                                  null: false
+    t.integer  "menu_id",                                                   null: false
+    t.integer  "max_people",                                                null: false
+    t.integer  "min_people",                                                null: false
+    t.integer  "people_min_price",                                          null: false
+    t.decimal  "max_price",          precision: 20, scale: 2, default: 0.0
+    t.decimal  "min_price",          precision: 20, scale: 2, default: 0.0
+    t.decimal  "actual_price",       precision: 20, scale: 2, default: 0.0
+    t.decimal  "prices_array",                                                           array: true
+    t.integer  "participants_count",                          default: 0
+    t.decimal  "actual_sale",        precision: 20, scale: 2, default: 0.0
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
