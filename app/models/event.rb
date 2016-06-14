@@ -67,6 +67,8 @@ class Event < ActiveRecord::Base
   #
   #                       order[:field] = :direction
   def self.search(filters = {}, order = {})
+    raise filters.inspect
+
     # filters variables binding
     categories = filters[:categories]
     date_range = filters[:date_range]

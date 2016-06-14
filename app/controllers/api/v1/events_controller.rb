@@ -26,7 +26,7 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search
+    @events = Event.search(search_params)
     events = @events.map do |event|
       EventSerializer.new(event)
     end
@@ -54,5 +54,15 @@ class Api::V1::EventsController < ApplicationController
 
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def search_params
+      params.require(:filters).permit(
+          :categories => [],
+          :date_range => [:start, :end],
+          :price_range => [:start, :end],
+          :participants_range => [:start, :end],
+          :actual_sale_range => [:start, :end]
+      )
     end
 end
