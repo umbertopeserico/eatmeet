@@ -24,7 +24,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   def events
     @events = @category.events
-    render 'events/index'
+    respond_with (@events)
   end
 
   private

@@ -6,4 +6,5 @@ class EventSerializer < ActiveModel::Serializer
   belongs_to :menu
   has_one :restaurant
   has_one :restaurant_owner
+  has_many :categories
 end
