@@ -65,10 +65,9 @@ class Event < ActiveRecord::Base
   #
   #           order: this is the order for events
   #
-  #                       order[:field] = :direction
+  #                       order[:field] = field
+  #                       order[:direction] = direction asc/desc
   def self.search(filters = {}, order = {})
-    raise filters.inspect
-
     # filters variables binding
     categories = filters[:categories]
     date_range = filters[:date_range]
@@ -108,7 +107,9 @@ class Event < ActiveRecord::Base
     end
 
     if !order.empty?
-      events = events.order(order.first[0], order.first[1])
+      field = order[:field].to_sym
+      direction = order[:direction].downcase.to_sym
+      events = events.order( field  => direction)
     end
 
     return events

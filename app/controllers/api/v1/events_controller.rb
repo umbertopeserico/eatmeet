@@ -5,15 +5,7 @@ class Api::V1::EventsController < ApplicationController
 
   def index
     @events = Event.all
-    events = @events.map do |event|
-      CategorySerializer.new(event)
-    end
-    respond_with(
-      {
-        events: events,
-        meta: {}
-      }
-    )
+    get_response
   end
 
   def show
@@ -26,7 +18,12 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search(search_params)
+    @events = Event.search(search_params, order_params)
+    get_response
+  end
+
+  private
+  def get_response
     events = @events.map do |event|
       EventSerializer.new(event)
     end
@@ -39,30 +36,21 @@ class Api::V1::EventsController < ApplicationController
     )
   end
 
-  private
-    def get_response
-      events = @events.map do |event|
-        CategorySerializer.new(event)
-      end
-      respond_with(
-        {
-          events: events,
-          meta: {}
-        }
-      )
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  def search_params
+    params.require(:filters).permit(
+        :categories => [],
+        :date_range => [:start, :end],
+        :price_range => [:start, :end],
+        :participants_range => [:start, :end],
+        :actual_sale_range => [:start, :end]
+    )
+  end
 
-    def search_params
-      params.require(:filters).permit(
-          :categories => [],
-          :date_range => [:start, :end],
-          :price_range => [:start, :end],
-          :participants_range => [:start, :end],
-          :actual_sale_range => [:start, :end]
-      )
-    end
+  def order_params
+    params.require(:order).permit(:field, :direction)
+  end
 end
