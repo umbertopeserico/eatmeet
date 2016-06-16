@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       end
 
       resources :users, only: [:show]
+
+      resources :restaurants, only: [ :index ]
     end
   end
 

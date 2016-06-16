@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613155229) do
+ActiveRecord::Schema.define(version: 20160616081938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,18 +101,20 @@ ActiveRecord::Schema.define(version: 20160613155229) do
   add_index "restaurant_owners", ["unlock_token"], name: "index_restaurant_owners_on_unlock_token", unique: true, using: :btree
 
   create_table "restaurants", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "name",                null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "name",                              null: false
     t.text     "description"
-    t.string   "email",               null: false
+    t.string   "email",                             null: false
     t.string   "phone"
     t.string   "street"
     t.string   "city"
     t.string   "zip_code"
     t.string   "province"
     t.string   "full_address"
-    t.integer  "restaurant_owner_id", null: false
+    t.integer  "restaurant_owner_id",               null: false
+    t.float    "lat",                 default: 0.0, null: false
+    t.float    "lgt",                 default: 0.0, null: false
   end
 
   add_index "restaurants", ["email"], name: "index_restaurants_on_email", using: :btree

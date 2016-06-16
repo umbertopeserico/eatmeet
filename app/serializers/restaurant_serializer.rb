@@ -5,4 +5,6 @@ class RestaurantSerializer < ActiveModel::Serializer
              :created_at, :updated_at
 
   belongs_to :restaurant_owner
+
+  has_many :events
 end
