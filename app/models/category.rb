@@ -14,6 +14,7 @@ class Category < ActiveRecord::Base
                             uniqueness: { case_sensitive: false }
 
   # Relations
+  has_attached_file :image
   has_and_belongs_to_many :events
 
   # Methods

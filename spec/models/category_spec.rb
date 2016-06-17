@@ -20,6 +20,7 @@ RSpec.describe Category, type: :model do
   it { expect(subject).to respond_to(:name) }
   it { expect(subject).to respond_to(:events) }
   it { expect(subject).to respond_to(:events_count) }
+  it { expect(subject).to respond_to(:image) }
 
   describe 'name' do
     describe 'empty' do
