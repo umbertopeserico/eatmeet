@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   namespace :administrator do
+    resources :categories
     resources :zones
     resources :restaurant_owners
     resources :restaurants

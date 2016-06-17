@@ -1,0 +1,33 @@
+<% content_for(:page_header) do %>
+  <h1>
+    Categories
+    <%= link_to new_administrator_category_path, class: 'btn btn-primary pull-right' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Aggiungi
+    <% end %>
+  </h1>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th class="action-column"></th>
+        <th class="action-column"></th>
+        <th class="action-column"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @categories) do |category| %>
+            <td><%= category.name %></td>
+            <td><%= image_tag category.image.url(:thumb) %></td>
+            <td><%= link_to 'Show', administrator_category_path(category) %></td>
+        <td><%= link_to 'Edit', edit_administrator_category_path(category) %></td>
+        <td><%= link_to 'Destroy', administrator_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

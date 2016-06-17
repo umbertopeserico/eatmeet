@@ -9,13 +9,19 @@
 #
 
 class Category < ActiveRecord::Base
+  # Relations
+  has_attached_file :image, {
+                      styles: { medium: "128x128>", thumb: "64x64>" },
+                      default_url: ':style/missing.png',
+                    }.merge(PaperclipConfig.to_h)
+
+  has_and_belongs_to_many :events
+
   # Validations
   validates :name,          presence: true,
-                            uniqueness: { case_sensitive: false }
+            uniqueness: { case_sensitive: false }
 
-  # Relations
-  has_attached_file :image
-  has_and_belongs_to_many :events
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   # Methods
   def events_count
