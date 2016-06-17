@@ -24,6 +24,9 @@ gem 'bootstrap-generators'
 gem 'active_model_serializers'
 gem 'font-awesome-rails'
 
+gem "paperclip", git: 'git://github.com/thoughtbot/paperclip.git'
+gem 'aws-sdk', '~> 2'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
