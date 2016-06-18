@@ -11,7 +11,11 @@ class CategorySerializer < ActiveModel::Serializer
     if PaperclipConfig.storage != :s3
       Settings.app_url + ApplicationController.helpers.asset_url(object.image.url(:thumb))
     else
-      object.image.url
+      if object.image_file_name.nil?
+        Settings.app_url + ApplicationController.helpers.asset_url(object.image.url(:thumb))
+      else
+        object.image.url(:thumb)
+      end
     end
   end
 end
