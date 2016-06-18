@@ -18,22 +18,38 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search(search_params, order_params)
-    get_response
+    if params[:order].nil?
+      @events = Event.search(search_params)
+    else
+      @events = Event.search(search_params, order_params)
+    end
+    get_response(200)
   end
 
   private
-  def get_response
+  def get_response(status=nil)
     events = @events.map do |event|
       EventSerializer.new(event)
     end
-    respond_with(
-      {
-        events: events,
-        meta: {}
-      },
-      location: search_api_events_path
-    )
+    if status.nil?
+      respond_with(
+        {
+          events: events,
+          meta: {}
+        },
+        location: search_api_events_path
+      )
+    else
+      respond_with(
+          {
+              events: events,
+              meta: {}
+          },
+          location: search_api_events_path,
+          status: status
+      )
+    end
+
   end
 
   def set_event
@@ -42,7 +58,7 @@ class Api::V1::EventsController < ApplicationController
 
   def search_params
     params.require(:filters).permit(
-        :categories => [],
+          :categories => [],
         :date_range => [:start, :end],
         :price_range => [:start, :end],
         :participants_range => [:start, :end],

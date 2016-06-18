@@ -82,6 +82,7 @@ class Event < ActiveRecord::Base
       events = self.all
       # The categories filters must be an array of integer
       if categories
+
         events = events.includes(:categories).where(:categories => { id: categories })
       end
       if date_range
