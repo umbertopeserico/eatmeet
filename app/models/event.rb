@@ -82,13 +82,14 @@ class Event < ActiveRecord::Base
       events = self.all
       # The categories filters must be an array of integer
       if categories
-
         events = events.includes(:categories).where(:categories => { id: categories })
       end
       if date_range
         start_date = (date_range[:start].to_s == '' ? 20.years.ago : date_range[:start] )
         end_date = (date_range[:end].to_s == '' ? 20.years.from_now : date_range[:end] )
         events = events.where(:schedule => start_date..end_date)
+      else
+        events = events.where(:schedule => Date.today..20.years.from_now)
       end
       if price_range
         start_price = (price_range[:start].to_s == '' ? 0 : price_range[:start] )
