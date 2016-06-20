@@ -19,9 +19,17 @@ class Api::V1::EventsController < ApplicationController
 
   def search
     if params[:order].nil?
-      @events = Event.search(search_params)
+      if params[:filters].nil?
+        @events = Event.search(search_params)
+      else
+        @events = Event.search
+      end
     else
-      @events = Event.search(search_params, order_params)
+      if params[:filters].nil?
+        @events = Event.search({}, order_params)
+      else
+        @events = Event.search(search_params, order_params)
+      end
     end
     get_response(200)
   end
