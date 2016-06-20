@@ -20,9 +20,9 @@ class Api::V1::EventsController < ApplicationController
   def search
     if params[:order].nil?
       if params[:filters].nil?
-        @events = Event.search(search_params)
-      else
         @events = Event.search
+      else
+        @events = Event.search(search_params)
       end
     else
       if params[:filters].nil?
@@ -66,7 +66,7 @@ class Api::V1::EventsController < ApplicationController
 
   def search_params
     params.require(:filters).permit(
-          :categories => [],
+        :categories => [],
         :date_range => [:start, :end],
         :price_range => [:start, :end],
         :participants_range => [:start, :end],
