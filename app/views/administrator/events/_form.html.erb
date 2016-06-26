@@ -71,4 +71,11 @@
       <%= f.submit class: "btn btn-primary" %>
     </div>
   </div>
+    <%= f.fields_for :photos do |ff| %>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.file_field :image, class: "" %>
+        </div>
+      </div>
+    <% end %>
 <% end %>

@@ -31,6 +31,7 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_one :restaurant, through: :menu
   has_one :restaurant_owner, through: :restaurant
+  has_many :photos, as: :imageable
   belongs_to :menu
 
   # Callbacks
@@ -41,6 +42,8 @@ class Event < ActiveRecord::Base
 
   # Methods
   alias :participants :users
+
+  accepts_nested_attributes_for :photos
 
   # Search by parameters
   # Parameters:

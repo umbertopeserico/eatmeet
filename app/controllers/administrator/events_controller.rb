@@ -42,6 +42,6 @@ class Administrator::EventsController < Administrator::AdministratorController
     end
 
     def event_params
-      params.require(:event).permit(:title, :schedule, :menu_id, :max_people, :min_people, :people_min_price, :max_price, :min_price, :actual_price)
+      params.require(:event).permit(:title, :schedule, :menu_id, :max_people, :min_people, :people_min_price, :max_price, :min_price, :actual_price, photos_attributes: [ :image ])
     end
 end

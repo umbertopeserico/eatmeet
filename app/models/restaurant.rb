@@ -27,6 +27,7 @@ class Restaurant < ActiveRecord::Base
   has_many :menus, dependent: :destroy
   has_and_belongs_to_many :zones
   has_many :events, through: :menus
+  has_many :photos, as: :imageable
   belongs_to :restaurant_owner
 
   # Callbacks
