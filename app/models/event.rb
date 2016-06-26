@@ -32,6 +32,7 @@ class Event < ActiveRecord::Base
   has_one :restaurant, through: :menu
   has_one :restaurant_owner, through: :restaurant
   has_many :photos, as: :imageable
+  #has_many :imageables, :through => :photos, source: :image, source_type: :photo
   belongs_to :menu
 
   # Callbacks

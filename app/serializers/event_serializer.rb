@@ -7,4 +7,5 @@ class EventSerializer < ActiveModel::Serializer
   has_one :restaurant
   has_one :restaurant_owner
   has_many :categories
+  has_many :photos, include: :image
 end

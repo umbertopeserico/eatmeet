@@ -61,7 +61,11 @@
 
     <tbody>
     <%= content_tag_for(:tr, @event.photos) do |photo| %>
-        <td><%= image_tag photo.image(:thumb) %></td>
+        <td>
+          <%= link_to photo.image.url do %>
+            <%= image_tag photo.image(:thumb) %>
+          <% end %>
+        </td>
         <td><%= link_to 'Destroy', administrator_event_photo_path(@event,photo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
     </tbody>
