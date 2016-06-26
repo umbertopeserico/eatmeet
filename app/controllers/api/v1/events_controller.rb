@@ -67,6 +67,7 @@ class Api::V1::EventsController < ApplicationController
   def search_params
     params.require(:filters).permit(
         :categories => [],
+        :restaurants => [],
         :date_range => [:start, :end],
         :price_range => [:start, :end],
         :participants_range => [:start, :end],

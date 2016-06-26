@@ -74,6 +74,7 @@ class Event < ActiveRecord::Base
     price_range = filters[:price_range]
     participants_range = filters[:participants_range]
     actual_sale_range = filters[:actual_sale_range]
+    restaurants = filters[:restaurants]
 
     # if there are no filters get events in the future
     if filters.empty?
@@ -83,6 +84,10 @@ class Event < ActiveRecord::Base
       # The categories filters must be an array of integer
       if categories
         events = events.includes(:categories).where(:categories => { id: categories })
+      end
+      if restaurants
+        #events = events.includes(:menu).where( :restaurant => { id: restaurants } )
+        events = events.joins(:restaurant).where(:restaurants => {:id => restaurants})
       end
       if date_range
         start_date = (date_range[:start].to_s == '' ? 20.years.ago : date_range[:start] )
