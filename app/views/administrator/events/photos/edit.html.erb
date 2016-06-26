@@ -1,0 +1,11 @@
+<% content_for(:page_header) do %>
+<h1>
+  <%= link_to administrator_events_path(@event), class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+  <h1>Edit photo</h1>
+</h1>
+<% end %>
+
+<%= render 'form' %>

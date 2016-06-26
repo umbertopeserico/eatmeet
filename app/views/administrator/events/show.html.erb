@@ -41,3 +41,29 @@
   <dd><%= @event.actual_price %></dd>
 
 </dl>
+
+<h3>
+  Photos
+  <%= link_to new_administrator_event_photo_path(@event), class: 'btn btn-primary pull-right' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Aggiungi
+  <% end %>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Image</th>
+      <th class="action-column"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <%= content_tag_for(:tr, @event.photos) do |photo| %>
+        <td><%= image_tag photo.image(:thumb) %></td>
+        <td><%= link_to 'Destroy', administrator_event_photo_path(@event,photo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+    </tbody>
+  </table>
+</div>

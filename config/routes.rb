@@ -29,7 +29,9 @@ Rails.application.routes.draw do
       resources :photos, on: :member, only: [ :new, :create, :destroy ]
     end
     resources :menus
-    resources :events
+    resources :events do
+      resources :photos, on: :member, only: [ :new, :create, :destroy ], module: :events
+    end
     resources :users
   end
 
