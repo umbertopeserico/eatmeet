@@ -1,0 +1,11 @@
+<% content_for(:page_header) do %>
+<h1>
+  New administrator_restaurants_photo
+  <%= link_to administrator_restaurants_photos_path(@restaurant), class: 'btn btn-default pull-right' do %>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  Back
+  <% end %>
+</h1>
+<% end %>
+
+<%= render 'form' %>

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :categories
     resources :zones
     resources :restaurant_owners
-    resources :restaurants
+    resources :restaurants do
+      resources :photos, on: :member, only: [ :new, :create, :destroy ]
+    end
     resources :menus
     resources :events
     resources :users
