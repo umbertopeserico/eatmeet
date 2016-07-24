@@ -1,5 +1,6 @@
 class Api::V1::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :events]
+  #before_action :authenticate_user!
 
   respond_to :json
 
@@ -8,14 +9,15 @@ class Api::V1::CategoriesController < ApplicationController
     categories = @categories.map do |category|
       CategorySerializer.new(category)
     end
-    respond_with(
-        {
-            categories: categories,
-            meta: {
-                total: @categories.count
-            }
-        }
-    )
+    respond_with(categories)
+    #respond_with(
+    #    {
+    #        categories: categories,
+    #        meta: {
+    #            total: @categories.count
+    #        }
+    #    }
+    #)
   end
 
   def show

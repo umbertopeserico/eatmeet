@@ -1,5 +1,5 @@
 class CategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :image, :meta, :created_at, :updated_at
+  attributes :id, :name, :image, :events, :created_at, :updated_at
 
   def meta
     a = Hash.new
